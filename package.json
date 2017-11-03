@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.5.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "ipma",
+  "version": "0.0.1",
+  "description": "A global distributed sheet music archive",
   "repository": {
     "type": "git",
     "url": "git://github.com/react-boilerplate/react-boilerplate.git"
@@ -10,7 +10,7 @@
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Ron Gruesbeck",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -241,6 +241,7 @@
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
     "styled-components": "2.0.0",
+    "superagent": "^3.8.0",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.3"
   },
