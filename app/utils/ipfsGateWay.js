@@ -1,20 +1,23 @@
 import request from 'superagent';
-import { IPFS_PUBLIC_GATEWAY } from './constants';
+import {
+  IPFS_PUBLIC_GATEWAY
+} from './constants';
 
 class IpfsGateWay {
 
-  constructor(gatewayUrl) {
-    this.gatewayUrl = gatewayUrl || IPFS_PUBLIC_GATEWAY;
+  constructor(getGateWayUrl) {
+    this.getGateWay = getGateWayUrl || IPFS_PUBLIC_GATEWAY;
+    this.addGateWay = IPFS_PUBLIC_GATEWAY;
   }
 
   get(fileMultihash) {
     return request
-      .get(this.gatewayUrl + fileMultihash);
+      .get(this.getGateWay + fileMultihash);
   }
 
   add(file) {
     return request
-      .post(this.gatewayUrl)
+      .post(this.addGateWay)
       .send(file);
   }
 
