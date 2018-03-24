@@ -13,7 +13,7 @@ const SearchInput = styled.input.attrs({
   font-size: 0.875rem;
   display: block;
   height: 2.5rem;
-  width: 100%;
+  width: -webkit-fill-available;
   min-width: 15rem;
   padding: 1rem;
   margin: 1rem;
