@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SearchInput = styled.input.attrs({
-  type: 'text',
+  type: 'search',
 })`
   font-size: 0.875rem;
   display: block;
@@ -31,6 +31,7 @@ SearchInput.propTypes = {
 };
 
 SearchInput.defaultProps = {
+  placeholder: "Search",
 };
 
 export default SearchInput;

@@ -19,10 +19,16 @@ import saga from './saga';
 import SearchInput from 'components/SearchInput';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    this.input.focus();
+  }
   render() {
     return (
       <div>
-        <SearchInput placeholder="Search"/>
+        <SearchInput
+          innerRef={x => { this.input = x; }}
+          onMouseEnter={() => { this.input.focus(); }}
+        />
       </div>
     );
   }
