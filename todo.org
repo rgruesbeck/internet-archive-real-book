@@ -1,0 +1,26 @@
+* todo
+- [X] search bar is focused
+- [-] blue search icon
+  - [X] https://github.com/styled-components/styled-components/issues/338#issuecomment-273423854
+  - [ ] fix search icon styling
+- [ ] make search menu button
+- [ ] wire up the store
+- [ ] Loaded screen
+- [ ] transition button
+- [ ] artwork for main page
+  - [ ] scan and svg of art
+  - [ ] https://css-tricks.com/svg-line-animation-works/
+* search input styles
+  font-size: 0.875rem;
+  display: block;
+  height: 2.5rem;
+  width: -webkit-fill-available;
+  min-width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+  color: #152935;
+  opacity: ${(props) => props.disabled ? 'not-allowed' : 'auto'};
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  opacity: ${(props) => props.disabled ? 0.50 : 1};
