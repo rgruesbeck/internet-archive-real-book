@@ -72,13 +72,15 @@ const Button = styled.button`
   }
 `;
 
-function SearchBar() {
+function SearchBar({ onSubmitSearch }) {
   return (
     <Bar>
       <Input
         placeholder="Search"
       />
-      <Button>
+      <Button
+        onClick={onSubmitSearch}
+      >
         <Icon title="Search" size="1.5em">
           <path
             transform="translate(4, 4)"

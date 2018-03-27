@@ -28,26 +28,44 @@ const TuneCard = styled.li`
   font-size: 1.5rem;
   color: navy;
   cursor: pointer;
-  height: 6rem;
-  padding: 0.75rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.75rem;
   border-top: 1px solid rgba(0,0,128,0.15);
   &:hover {
     box-shadow: 0 1px 3px rgba(0,0,128,0.26);
   }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+  p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
 `;
-
 
 class SearchResults extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    let results = [
+      'Stella',
+      'Invitation',
+      'What Is This Thing Called Love',
+      'Have You Met Miss Jones',
+    ].map( t => {
+      return(
+        <TuneCard>
+          <h1>{t}</h1>
+          <p>composer</p>
+        </TuneCard>
+      );
+    });
+
     return (
       <Results>
         <TuneList>
-          <TuneCard>
-            Stella
-          </TuneCard>
-          <TuneCard>
-            Invitation
-          </TuneCard>
+          {results}
         </TuneList>
       </Results>
     );

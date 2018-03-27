@@ -27,7 +27,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   render() {
     return (
       <div>
-        <SearchBar />
+        <SearchBar onSubmitSearch={() => { console.log('submit'); }} />
         <SearchResults />
         <NavButtonSearch />
       </div>
