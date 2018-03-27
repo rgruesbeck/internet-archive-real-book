@@ -16,16 +16,18 @@ import makeSelectSearch from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
+import SearchBar from 'components/SearchBar';
 import SearchInput from 'components/SearchInput';
+import SearchButton from 'components/SearchButton';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    this.input.focus();
+    console.log(this);
   }
   render() {
     return (
       <div>
-        <SearchInput
+        <SearchBar
           innerRef={x => { this.input = x; }}
           onMouseEnter={() => { this.input.focus(); }}
         />
