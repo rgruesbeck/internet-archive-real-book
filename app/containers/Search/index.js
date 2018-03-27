@@ -18,6 +18,7 @@ import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
 import NavButtonSearch from 'components/NavButtonSearch';
+import SearchResults from 'components/SearchResults';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -27,6 +28,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
     return (
       <div>
         <SearchBar />
+        <SearchResults />
         <NavButtonSearch />
       </div>
     );
