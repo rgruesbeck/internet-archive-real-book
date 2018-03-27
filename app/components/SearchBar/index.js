@@ -11,7 +11,7 @@ const Bar = styled.div`
   display: flex;
   width: -webkit-fill-available;
   font-size: 1.5rem;
-  min-width: 15rem;
+  min-width: 10rem;
   max-width: 40rem;
   margin: 1rem auto;
   border: 1px solid rgba(0,0,128,0.15);

@@ -14,6 +14,7 @@ const Results = styled.div`
   max-width: 40rem;
   margin: 1rem auto;
   border: 1px solid rgba(0,0,128,0.15);
+  border-top: 0px solid rgba(0,0,128,0.15);
 `;
 
 const TuneList = styled.ul`
