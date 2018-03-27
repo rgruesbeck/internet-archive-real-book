@@ -67,6 +67,9 @@ const Button = styled.button`
     background-color: navy;
     color: white;
   }
+  &:focus {
+    outline: none;
+  }
 `;
 
 function SearchBar() {

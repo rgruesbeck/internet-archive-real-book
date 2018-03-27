@@ -1,8 +1,10 @@
 * todo
-- [X] search bar is focused
-- [-] blue search icon
+- [X] blue search icon
   - [X] https://github.com/styled-components/styled-components/issues/338#issuecomment-273423854
-  - [ ] fix search icon styling
+  - [X] fix search icon styling
+- [ ] search bar is focused
+        innerRef={x => { this.input = x; }}
+        onMouseEnter={() => { this.input.focus(); }}
 - [ ] make search menu button
 - [ ] wire up the store
 - [ ] Loaded screen

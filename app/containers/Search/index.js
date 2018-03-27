@@ -17,8 +17,6 @@ import reducer from './reducer';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
-import SearchInput from 'components/SearchInput';
-import SearchButton from 'components/SearchButton';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
