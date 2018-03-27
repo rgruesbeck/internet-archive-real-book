@@ -45,10 +45,7 @@ const Icon = ({ size = '1em', color = 'currentColor', title, children }) => (
     {children}
     <style jsx>{`
       svg {
-        height: 100%;
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        font-size: 2.50rem;
         vertical-align: middle;
         fill: ${color};
       }
@@ -61,8 +58,6 @@ const Button = styled.button`
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   color: navy;
-  padding-left: 1rem;
-  padding-right: 1rem;
   opacity: ${(props) => props.disabled ? 'not-allowed' : 'auto'};
   background-color: whitesmoke;
   opacity: ${(props) => props.disabled ? 0.50 : 1};
