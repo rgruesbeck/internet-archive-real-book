@@ -17,6 +17,7 @@ import reducer from './reducer';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
+import NavButtonSearch from 'components/NavButtonSearch';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -25,10 +26,8 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
   render() {
     return (
       <div>
-        <SearchBar
-          innerRef={x => { this.input = x; }}
-          onMouseEnter={() => { this.input.focus(); }}
-        />
+        <SearchBar />
+        <NavButtonSearch />
       </div>
     );
   }
