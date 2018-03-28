@@ -1,13 +1,14 @@
 * todo
-- [-] blue search icon
+- [X] blue search icon
   - [X] https://github.com/styled-components/styled-components/issues/338#issuecomment-273423854
-  - [ ] fix search icon styling
-- [ ] menu button (search)
+  - https://icomoon.io/app/#/select/image
+  - [X] fix search icon styling
+- [X] menu button (search)
+- [ ] wire up the store
+- [ ] refactor search bar styles
 - [ ] search bar is focused
         innerRef={x => { this.input = x; }}
         onMouseEnter={() => { this.input.focus(); }}
-- [ ] refactor search bar styles
-- [ ] wire up the store
 - [ ] Loaded screen
 - [ ] transition button
 - [ ] artwork for main page

@@ -53,6 +53,7 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
       'Invitation',
       'What Is This Thing Called Love',
       'Have You Met Miss Jones',
+      'Summertime',
     ].map( t => {
       return(
         <TuneCard>

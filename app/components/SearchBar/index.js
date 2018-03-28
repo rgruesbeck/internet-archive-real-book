@@ -72,10 +72,11 @@ const Button = styled.button`
   }
 `;
 
-function SearchBar({ onSubmitSearch }) {
+function SearchBar({ onSubmitSearch, onChangeSearch }) {
   return (
     <Bar>
       <Input
+        onChange={onChangeSearch}
         placeholder="Search"
       />
       <Button
