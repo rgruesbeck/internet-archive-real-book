@@ -76,7 +76,7 @@ function SearchBar({ onSubmitSearch, onChangeSearch }) {
   return (
     <Bar>
       <Input
-        onChange={onChangeSearch}
+        onChange={(evt) => { onChangeSearch(evt); }}
         placeholder="Search"
       />
       <Button

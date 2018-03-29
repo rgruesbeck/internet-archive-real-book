@@ -13,12 +13,17 @@ import { compose } from 'redux';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import makeSelectSearch from './selectors';
+import {
+  changeSearch,
+  submitSearch,
+} from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
 import NavButtonSearch from 'components/NavButtonSearch';
 import SearchResults from 'components/SearchResults';
+
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -28,7 +33,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
     return (
       <div>
         <SearchBar
-          onChangeSearch={() => { console.log('change'); }}
+          onChangeSearch={(evt) => { console.log(evt.target.value); }}
           onSubmitSearch={() => { console.log('submit'); }}
         />
         <SearchResults />

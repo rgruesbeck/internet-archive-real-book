@@ -13,8 +13,8 @@ const Results = styled.div`
   min-width: 15rem;
   max-width: 40rem;
   margin: 1rem auto;
+  border-radius: 3px;
   border: 1px solid rgba(0,0,128,0.15);
-  border-top: 0px solid rgba(0,0,128,0.15);
 `;
 
 const TuneList = styled.ul`
@@ -43,6 +43,9 @@ const TuneCard = styled.li`
     font-size: 1.25rem;
     font-weight: 300;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  &:first-child {
+    border-top: 1px solid rgba(0,0,128,0);
   }
 `;
 

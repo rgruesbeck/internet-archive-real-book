@@ -27,4 +27,175 @@
   background-color: white;
   border: 1px solid transparent;
   border-radius: 3px;
-  opacity: ${(props) => props.disabled ? 0.50 : 1};
+* create card example
+ /**
+ *
+ * CardCreate
+ *
+ */
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import injectSaga from 'utils/injectSaga';
+import injectReducer from 'utils/injectReducer';
+
+
+import Form from 'components/Form';
+import TextInput from 'components/TextInput';
+import TextArea from 'components/TextArea';
+import FileInput from 'components/FileInput';
+import Button from 'components/Button';
+
+import {
+  createCard,
+  uploadImage,
+  changeId,
+  changeTitle,
+  changeName,
+  changeEmail,
+  changeWeb,
+  changeDescription,
+} from './actions';
+
+// import makeSelectCardCreate from './selectors';
+import {
+  makeSelectCard,
+  makeSelectError,
+} from './selectors';
+
+import reducer from './reducer';
+import saga from './saga';
+
+export class CardCreate extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  responseMessage() {
+    const m = [this.props.error.toString(), this.props.card];
+    return JSON.stringify(m);
+  }
+  render() {
+    const FormHeader = styled.h1`
+      font-size: 2rem;
+      color: palevioletred;
+      margin: 1rem;
+    `;
+    const ResponseWrapper = styled.div`
+      display: block;
+      font-size: 0.8rem;
+      background: papayawhip;
+      width: 100vw;
+      height: 100vh;
+    `;
+    return (
+      <div>
+        <Form
+          onSubmit={this.props.onSubmitForm}
+        >
+          <FormHeader>Create Card</FormHeader>
+          <TextInput
+            type="text"
+            placeholder="Title"
+            value={this.props.title}
+            onChange={this.props.onChangeTitle}
+          />
+          <TextInput
+            type="text"
+            placeholder="Creator Name"
+            value={this.props.name}
+            onChange={this.props.onChangeName}
+          />
+          <TextInput
+            type="email"
+            placeholder="Creator Email"
+            value={this.props.email}
+            onChange={this.props.onChangeEmail}
+          />
+          <TextInput
+            type="text"
+            placeholder="Creator Link"
+            value={this.props.web}
+            onChange={this.props.onChangeWeb}
+          />
+          <FileInput
+            value={this.props.image}
+            onChange={this.props.onUploadImage}
+          >
+            Upload Image
+          </FileInput>
+          <TextArea
+            type="text"
+            placeholder="Description"
+            value={this.props.description}
+            onChange={this.props.onChangeDescription}
+          />
+          <Button
+            type="submit"
+          >
+            Submit
+          </Button>
+          <div>
+            <hr></hr>
+            <ResponseWrapper>
+              <h1>Server Response</h1>
+              {this.responseMessage().replace(/,/g, ',\n')}
+            </ResponseWrapper>
+          </div>
+        </Form>
+      </div>
+    );
+  }
+}
+
+CardCreate.propTypes = {
+  onChangeTitle: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func.isRequired,
+  onChangeEmail: PropTypes.func.isRequired,
+  onChangeWeb: PropTypes.func.isRequired,
+  onChangeDescription: PropTypes.func.isRequired,
+  onUploadImage: PropTypes.func.isRequired,
+  onSubmitForm: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  name: PropTypes.string,
+  email: PropTypes.string,
+  web: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.object,
+  card: PropTypes.object,
+  error: PropTypes.object,
+};
+
+const mapStateToProps = createStructuredSelector({
+  card: makeSelectCard(),
+  error: makeSelectError(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onChangeId: (evt) => dispatch(changeId(evt.target.value)),
+    onChangeTitle: (evt) => dispatch(changeTitle(evt.target.value)),
+    onChangeName: (evt) => dispatch(changeName(evt.target.value)),
+    onChangeEmail: (evt) => dispatch(changeEmail(evt.target.value)),
+    onChangeWeb: (evt) => dispatch(changeWeb(evt.target.value)),
+    onChangeDescription: (evt) => dispatch(changeDescription(evt.target.value)),
+    onUploadImage: (evt) => dispatch(uploadImage(evt.target.files[0])),
+    onSubmitForm: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(createCard());
+    },
+  };
+}
+
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+
+const withReducer = injectReducer({ key: 'cardCreate', reducer });
+const withSaga = injectSaga({ key: 'cardCreate', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(CardCreate);
+ opacity: ${(props) => props.disabled ? 0.50 : 1};
