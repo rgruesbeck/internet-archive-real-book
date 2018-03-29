@@ -22,8 +22,9 @@ const Bar = styled.div`
 const Input = styled.input.attrs({
   type: 'search',
 })`
-  width: -webkit-fill-available;
   display: inline-block;
+  flex: auto;
+  width: -webkit-fill-available;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   color: navy;
