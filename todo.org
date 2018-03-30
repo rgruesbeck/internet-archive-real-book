@@ -6,6 +6,15 @@ http://iarealbook.s3-website-us-west-2.amazonaws.com/
   - [X] fix search icon styling
 - [X] menu button (search)
 - [ ] wire up the store
+  - [ ] search query
+    - [ ] constant, action, mapDispatchToProps
+    - [ ] reducer, selector, mapStateToProps
+  - [ ] search submit
+    - [ ] constant, action, mapDispatchToProps
+    - [ ] reducer, selector, mapStateToProps
+  - [ ] nav button
+    - [ ] constant, action, mapDispatchToProps
+    - [ ] reducer, selector, mapStateToProps
 - [ ] refactor search bar styles
 - [ ] search bar is focused
         innerRef={x => { this.input = x; }}
@@ -15,6 +24,12 @@ http://iarealbook.s3-website-us-west-2.amazonaws.com/
 - [ ] artwork for main page
   - [ ] scan and svg of art
   - [ ] https://css-tricks.com/svg-line-animation-works/
+* data flow
+1. `changeUsername()` will send text to the Redux store. The text can be accessed using `evt.target.value`. Here, `evt` is the `onChange` event emmited by pressing a key.
+2. The Redux store will consult with its corresponding reducer, since a reducer knows what to do with the data.
+3. When a reducer computes a new state tree, the store will update its state with the newly typed data.
+4. An update has occured in the state, therefore `mapStateToProps()` will be triggered and your react component will get the new data.
+5. The updated data will be set as the `value` to your `<Input />`.
 * search input styles
   font-size: 0.875rem;
   display: block;

@@ -59,7 +59,8 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
       'Summertime',
     ].map( t => {
       return(
-        <TuneCard>
+        //todo give tune cards ids
+        <TuneCard key={t}>
           <h1>{t}</h1>
           <p>composer</p>
         </TuneCard>

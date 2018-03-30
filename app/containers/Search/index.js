@@ -12,12 +12,12 @@ import { compose } from 'redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import makeSelectSearch from './selectors';
 import {
-  changeSearch,
-  submitSearch,
+  changeQuery,
+  submitQuery,
 } from './actions';
 import reducer from './reducer';
+import makeSelectSearch from './selectors';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
@@ -27,14 +27,13 @@ import SearchResults from 'components/SearchResults';
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    console.log(this);
   }
   render() {
     return (
       <div>
         <SearchBar
-          onChangeSearch={(evt) => { console.log(evt.target.value); }}
-          onSubmitSearch={() => { console.log('submit'); }}
+          onChange={this.props.onChangeQuery}
+          onSubmit={this.props.onSubmitQuery}
         />
         <SearchResults />
         <NavButtonSearch />
@@ -44,7 +43,8 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
 }
 
 Search.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  onChangeQuery: PropTypes.func.isRequired,
+  query: PropTypes.string,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -53,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onChangeQuery: (evt) => dispatch(changeQuery(evt.target.value)),
   };
 }
 

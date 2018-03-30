@@ -6,17 +6,19 @@
 
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  CHANGE_QUERY,
+  SUBMIT_QUERY,
 } from './constants';
 
 const initialState = fromJS({});
 
 function searchReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
-    default:
-      return state;
+  case CHANGE_QUERY:
+    return state
+      .set('query', action.query);
+  default:
+    return state;
   }
 }
 

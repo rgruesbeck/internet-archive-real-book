@@ -6,8 +6,8 @@
 
 import {
   DEFAULT_ACTION,
-  CHANGE_SEARCH,
-  SUBMIT_SEARCH,
+  CHANGE_QUERY,
+  SUBMIT_QUERY,
 } from './constants';
 
 export function defaultAction() {
@@ -16,14 +16,15 @@ export function defaultAction() {
   };
 }
 
-export function changeSearch() {
+export function changeQuery(query) {
   return {
-    type: CHANGE_SEARCH,
+    type: CHANGE_QUERY,
+    query,
   };
 }
 
-export function submitSearch() {
+export function submitQuery() {
   return {
-    type: SUBMIT_SEARCH,
+    type: SUBMIT_QUERY,
   };
 }

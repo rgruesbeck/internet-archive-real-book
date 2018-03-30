@@ -73,15 +73,15 @@ const Button = styled.button`
   }
 `;
 
-function SearchBar({ onSubmitSearch, onChangeSearch }) {
+function SearchBar({ onSubmit, onChange }) {
   return (
     <Bar>
       <Input
-        onChange={(evt) => { onChangeSearch(evt); }}
+        onChange={onChange}
         placeholder="Search"
       />
       <Button
-        onClick={onSubmitSearch}
+        onClick={onSubmit}
       >
         <Icon title="Search" size="1.5em">
           <path

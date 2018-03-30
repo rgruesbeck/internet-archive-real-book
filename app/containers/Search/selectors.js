@@ -9,6 +9,11 @@ const selectSearchDomain = (state) => state.get('search');
  * Other specific selectors
  */
 
+const makeSelectQuery = () => createSelector(
+  selectSearchDomain,
+  (substate) => substate.get('query')
+);
+
 
 /**
  * Default selector used by Search
@@ -22,4 +27,5 @@ const makeSelectSearch = () => createSelector(
 export default makeSelectSearch;
 export {
   selectSearchDomain,
+  selectSelectQuery,
 };

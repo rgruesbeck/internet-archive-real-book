@@ -12,8 +12,8 @@ const Button = styled.button`
   right: 1rem;
   bottom: 1rem;
   cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 2.75rem;
+  width: 2.75rem;
   background-color: white;
   color: navy;
   border: 1px solid rgba(0,0,128,0.15);
