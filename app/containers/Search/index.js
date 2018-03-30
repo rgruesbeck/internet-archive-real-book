@@ -35,7 +35,7 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
           onChange={this.props.onChangeQuery}
           onSubmit={this.props.onSubmitQuery}
         />
-        <SearchResults />
+        <SearchResults search={this.props.search}/>
         <NavButtonSearch />
       </div>
     );

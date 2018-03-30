@@ -5,10 +5,11 @@ http://iarealbook.s3-website-us-west-2.amazonaws.com/
   - https://icomoon.io/app/#/select/image
   - [X] fix search icon styling
 - [X] menu button (search)
-- [ ] wire up the store
-  - [ ] search query
-    - [ ] constant, action, mapDispatchToProps
-    - [ ] reducer, selector, mapStateToProps
+- [-] wire up the store
+  - [-] search query
+    - [X] constant, action, mapDispatchToProps
+    - [X] reducer, selector, mapStateToProps
+    - [ ] filter results
   - [ ] search submit
     - [ ] constant, action, mapDispatchToProps
     - [ ] reducer, selector, mapStateToProps

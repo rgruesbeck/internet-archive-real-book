@@ -1,8 +1,8 @@
 /**
-*
-* SearchResults
-*
-*/
+ *
+ * SearchResults
+ *
+ */
 
 import React from 'react';
 import styled from 'styled-components';
@@ -51,13 +51,17 @@ const TuneCard = styled.li`
 
 class SearchResults extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    let query = this.props.search.query;
     let results = [
       'Stella',
       'Invitation',
       'What Is This Thing Called Love',
       'Have You Met Miss Jones',
       'Summertime',
-    ].map( t => {
+    ].filter( t => {
+      let re = new RegExp(query, 'i');
+      return t.match(re);
+    }).map( t => {
       return(
         //todo give tune cards ids
         <TuneCard key={t}>
@@ -78,7 +82,6 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
 }
 
 SearchResults.propTypes = {
-
 };
 
 export default SearchResults;
