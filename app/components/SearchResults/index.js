@@ -91,7 +91,7 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
     });
 
     return (
-      <Results disabled={results.length == 0}>
+      <Results disabled={results.length == 0 || query == ""}>
         <TuneList>
           {results}
         </TuneList>
