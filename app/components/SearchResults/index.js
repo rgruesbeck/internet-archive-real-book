@@ -6,6 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import IpfsGateWay from 'utils/ipfsGateWay';
 
 const Results = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ const TuneCard = styled.li`
   h1 {
     font-size: 1.5rem;
     font-weight: 400;
+    text-transform: capitalize;
   }
   p {
     font-size: 1.25rem;
@@ -50,23 +52,28 @@ const TuneCard = styled.li`
 `;
 
 class SearchResults extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  componentDidMount() {
+    var ipfs = new IpfsGateWay;
+    var self = this;
+    ipfs.get('QmZVDEVjtwQ7Cd9oMJ3V4FWW9rbapz7V5sQmfGfXV96PET').then((res) => {
+        self.db = JSON.parse(res.text);
+    });
+  }
   render() {
+    console.log(this.db);
     let query = this.props.search.query;
-    let results = [
-      'Stella',
-      'Invitation',
-      'What Is This Thing Called Love',
-      'Have You Met Miss Jones',
-      'Summertime',
-    ].filter( t => {
+    let list = this.db || [];
+    let results = list.filter( t => {
       let re = new RegExp(query, 'i');
-      return t.match(re);
-    }).map( t => {
+      return t.title.match(re);
+    }).map((t, i) => {
       return(
         //todo give tune cards ids
-        <TuneCard key={t}>
-          <h1>{t}</h1>
-          <p>composer</p>
+        <TuneCard key={i}>
+          <h1>{t.title.toLowerCase()}</h1>
+          <a href={t.url}>
+            <p>{t.meta.book.title}</p>
+          </a>
         </TuneCard>
       );
     });

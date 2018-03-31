@@ -5,6 +5,7 @@ node_modules
 stats.json
 
 # Cruft
+tmp
 .DS_Store
 npm-debug.log
 .idea
