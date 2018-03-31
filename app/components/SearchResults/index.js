@@ -14,8 +14,8 @@ const Results = styled.div`
   min-width: 15rem;
   max-width: 40rem;
   margin: 1rem auto;
-  border-radius: 3px;
-  border: 1px solid rgba(0,0,128,0.15);
+  opacity: ${(props) => props.disabled ? 0 : 1};
+  transition: opacity 1s;
 `;
 
 const TuneList = styled.ul`
@@ -23,6 +23,8 @@ const TuneList = styled.ul`
   padding: 0;
   margin: 0;
   width: 100%;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,128,0.15);
 `;
 
 const Card = styled.li`
@@ -89,7 +91,7 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
     });
 
     return (
-      <Results>
+      <Results disabled={results.length == 0}>
         <TuneList>
           {results}
         </TuneList>
