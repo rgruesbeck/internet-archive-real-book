@@ -25,7 +25,7 @@ const TuneList = styled.ul`
   width: 100%;
 `;
 
-const TuneCard = styled.li`
+const Card = styled.li`
   font-size: 1.5rem;
   color: navy;
   cursor: pointer;
@@ -51,31 +51,40 @@ const TuneCard = styled.li`
   }
 `;
 
+function TuneCard({ id, title, booktitle, onSelect }) {
+  return (
+    <Card key={id} data-id={id} onClick={onSelect}>
+      <h1>{title}</h1>
+      <p>{booktitle}</p>
+    </Card>
+  );
+}
+
 class SearchResults extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
     var ipfs = new IpfsGateWay;
     var self = this;
     var ipfsHash = 'QmTRkh8MNqqmvrRrt5jhWZe3yydhC3jbY8Sjm7NBW73kmG';
     ipfs.get(ipfsHash).then((res) => {
-        self.db = JSON.parse(res.text);
+      self.db = JSON.parse(res.text);
+      localStorage.setItem('tunedb', res.text);
     });
   }
   render() {
-    console.log(this.db);
     let query = this.props.search.query;
     let list = this.db || [];
     let results = list.filter( t => {
       let re = new RegExp(query, 'i');
       return t.title.match(re);
-    }).map((t, i) => {
+    }).map((t, idx) => {
       return(
-        //todo give tune cards ids
-        <TuneCard key={i}>
-          <h1>{t.title.toLowerCase()}</h1>
-          <a href={t.url}>
-            <p>{t.meta.book.title}</p>
-          </a>
-        </TuneCard>
+        //todo give tune cards proper ids
+        <TuneCard
+          id={t.title.replace(/ /g, '-').toLowerCase()}
+          title={t.title.toLowerCase()}
+          booktitle={t.meta.book.title}
+          onSelect={this.props.onSelect}
+        />
       );
     });
 

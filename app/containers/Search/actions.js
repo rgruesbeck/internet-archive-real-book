@@ -8,6 +8,7 @@ import {
   DEFAULT_ACTION,
   CHANGE_QUERY,
   SUBMIT_QUERY,
+  SELECT_TUNE,
 } from './constants';
 
 export function defaultAction() {
@@ -26,5 +27,12 @@ export function changeQuery(query) {
 export function submitQuery() {
   return {
     type: SUBMIT_QUERY,
+  };
+}
+
+export function selectTune(id) {
+  return {
+    type: SELECT_TUNE,
+    id,
   };
 }

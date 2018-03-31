@@ -9,19 +9,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { push } from 'react-router-redux';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
   changeQuery,
   submitQuery,
+  selectTune,
 } from './actions';
 import reducer from './reducer';
 import makeSelectSearch from './selectors';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
-import NavButtonSearch from 'components/NavButtonSearch';
 import SearchResults from 'components/SearchResults';
 
 
@@ -35,8 +36,10 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
           onChange={this.props.onChangeQuery}
           onSubmit={this.props.onSubmitQuery}
         />
-        <SearchResults search={this.props.search}/>
-        <NavButtonSearch />
+        <SearchResults
+          search={this.props.search}
+          onSelect={this.props.onSelectTune}
+        />
       </div>
     );
   }
@@ -54,6 +57,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     onChangeQuery: (evt) => dispatch(changeQuery(evt.target.value)),
+    onSelectTune: (evt) => dispatch(push('/tunes/#' + evt.currentTarget.dataset.id.toLowerCase().replace(/ /g, '-'))),
   };
 }
 
