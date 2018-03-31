@@ -55,7 +55,8 @@ class SearchResults extends React.PureComponent { // eslint-disable-line react/p
   componentDidMount() {
     var ipfs = new IpfsGateWay;
     var self = this;
-    ipfs.get('QmZVDEVjtwQ7Cd9oMJ3V4FWW9rbapz7V5sQmfGfXV96PET').then((res) => {
+    var ipfsHash = 'QmTRkh8MNqqmvrRrt5jhWZe3yydhC3jbY8Sjm7NBW73kmG';
+    ipfs.get(ipfsHash).then((res) => {
         self.db = JSON.parse(res.text);
     });
   }
