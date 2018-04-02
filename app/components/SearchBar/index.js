@@ -13,7 +13,7 @@ const Bar = styled.div`
   font-size: 1.5rem;
   min-width: 10rem;
   max-width: 40rem;
-  margin: 1rem auto;
+  margin: 1rem 1rem auto;
   border: 1px solid rgba(0,0,128,0.15);
   box-shadow: 0 2px 3px rgba(0,0,128,0.06);
   border-radius: 3px;
