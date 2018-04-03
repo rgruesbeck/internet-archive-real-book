@@ -28,18 +28,22 @@ import SearchResults from 'components/SearchResults';
 import styled from 'styled-components';
 
 const Branding = styled.div`
+  font-size: 7.5vw;
   text-align: center;
   color: navy;
   min-width: 15rem;
   max-width: 40rem;
-  margin: 25vh auto;
+  margin: 30vh auto;
   display: ${(props) => props.disabled ? 'none' : 'block'};
+  @media (max-width: 40rem) {
+    font-size: 12vw;
+  }
   h1 {
-    font-size: 5rem;
+    font-size: 100%;
     margin: none;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 50%;
     font-weight: 200;
     margin: none;
   }
