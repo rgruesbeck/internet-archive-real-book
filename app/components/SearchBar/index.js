@@ -38,6 +38,9 @@ const Input = styled.input.attrs({
     color: navy;
     outline: none;
   }
+  @media (max-width: 40rem) {
+    width: 50%;
+  }
 `;
 
 const Icon = ({ size = '1em', color = 'currentColor', title, children }) => (
