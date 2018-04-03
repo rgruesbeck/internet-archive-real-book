@@ -9,22 +9,22 @@ import styled from 'styled-components';
 
 const Bar = styled.div`
   display: flex;
-  width: -webkit-fill-available;
   font-size: 1.5rem;
-  min-width: 10rem;
   max-width: 40rem;
-  margin: 1rem 1rem auto;
+  margin: 1rem auto;
   border: 1px solid rgba(0,0,128,0.15);
   box-shadow: 0 2px 3px rgba(0,0,128,0.06);
   border-radius: 3px;
+  @media (max-width: 40rem) {
+    margin: 1rem 1rem auto;
+  }
 `;
 
 const Input = styled.input.attrs({
   type: 'search',
 })`
-  display: inline-block;
   flex: auto;
-  width: -webkit-fill-available;
+  width: 100%;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   color: navy;
@@ -42,21 +42,13 @@ const Input = styled.input.attrs({
 
 const Icon = ({ size = '1em', color = 'currentColor', title, children }) => (
   <svg width={size} height={size} viewBox="0 0 32 32">
-  <title>{title}</title>
-  {children}
-  <style jsx>{`
-    svg {
-      display: block;
-      margin: auto;
-      vertical-align: middle;
-      fill: ${color};
-    }
-    `}</style>
+    <title>{title}</title>
+    {children}
   </svg>
 );
 
 const Button = styled.button`
-  display: inline-block;
+  flex: initial;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   color: navy;
