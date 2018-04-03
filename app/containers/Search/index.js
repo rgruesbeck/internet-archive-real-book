@@ -25,6 +25,26 @@ import saga from './saga';
 import SearchBar from 'components/SearchBar';
 import SearchResults from 'components/SearchResults';
 
+import styled from 'styled-components';
+
+const Branding = styled.div`
+  text-align: center;
+  color: navy;
+  min-width: 15rem;
+  max-width: 40rem;
+  margin: 25vh auto;
+  display: ${(props) => props.disabled ? 'none' : 'block'};
+  h1 {
+    font-size: 5rem;
+    margin: none;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 200;
+    margin: none;
+  }
+`;
+
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
@@ -36,6 +56,10 @@ export class Search extends React.Component { // eslint-disable-line react/prefe
           onChange={this.props.onChangeQuery}
           onSubmit={this.props.onSubmitQuery}
         />
+        <Branding disabled={this.props.search.query}>
+          <h1>multiBook</h1>
+          <h2>a digital real book</h2>
+        </Branding>
         <SearchResults
           search={this.props.search}
           onSelect={this.props.onSelectTune}
