@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import IpfsGateWay from 'utils/ipfsGateWay';
+import { Tune } from 'utils/api';
 
 const Results = styled.div`
   display: flex;
@@ -64,25 +65,18 @@ function TuneCard({ id, title, booktitle, onSelect }) {
 
 class SearchResults extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
-    var ipfs = new IpfsGateWay;
-    var self = this;
-    var ipfsHash = 'QmTRkh8MNqqmvrRrt5jhWZe3yydhC3jbY8Sjm7NBW73kmG';
-    ipfs.get(ipfsHash).then((res) => {
-      self.db = JSON.parse(res.text);
-      localStorage.setItem('tunedb', res.text);
-    });
   }
   render() {
     let query = this.props.search.query;
-    let list = this.db || [];
-    let results = list.filter( t => {
+    let results = [].filter( t => {
       let re = new RegExp(query, 'i');
       return t.title.match(re);
     }).map((t, idx) => {
+      //todo give tune cards proper ids
+      let slug = Tune.slug(t);
       return(
-        //todo give tune cards proper ids
         <TuneCard
-          id={t.title.replace(/ /g, '-').toLowerCase()}
+          id={slug}
           title={t.title.toLowerCase()}
           booktitle={t.meta.book.title}
           onSelect={this.props.onSelect}

@@ -18,8 +18,10 @@ import {
   submitQuery,
   selectTune,
 } from './actions';
+import { loadTunes } from 'containers/Tune/actions';
 import reducer from './reducer';
 import makeSelectSearch from './selectors';
+import makeSelectTune from 'containers/Tune/selectors';
 import saga from './saga';
 
 import SearchBar from 'components/SearchBar';
@@ -52,8 +54,10 @@ const Branding = styled.div`
 
 export class Search extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentDidMount() {
+    this.props.onLoadSearch();
   }
   render() {
+    console.log(this.props);
     return (
       <div>
         <SearchBar
@@ -80,10 +84,12 @@ Search.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   search: makeSelectSearch(),
+  tunes: makeSelectTune(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    onLoadSearch: (evt) => dispatch(loadTunes()),
     onChangeQuery: (evt) => dispatch(changeQuery(evt.target.value)),
     onSelectTune: (evt) => dispatch(push('/tunes/#' + evt.currentTarget.dataset.id.toLowerCase().replace(/ /g, '-'))),
   };

@@ -31,7 +31,7 @@ export function submitQuery() {
 }
 
 export function selectTune(id) {
-  return {
+ return {
     type: SELECT_TUNE,
     id,
   };
