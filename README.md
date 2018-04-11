@@ -1,4 +1,4 @@
-# An interface for lead sheets hosted on the Internet Archive
+# Multibook
 
-https://archive.org/
-https://ipfs.io/
+1000's of Jazz lead sheets on a single webapp
+URL: http://multibook.rocks/
